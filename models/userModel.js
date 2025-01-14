@@ -48,6 +48,11 @@ const userSchema = new mongoose.Schema(
     },
 
     additionalComments: { type: String },
+
+    pictureUrl: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

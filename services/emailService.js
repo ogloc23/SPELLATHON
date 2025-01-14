@@ -1,6 +1,8 @@
 const nodemailer = require("nodemailer");
 
 const sendNotificationEmail = async (user) => {
+  if (!user.email) throw new Error("No recipent email defined");
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -21,8 +23,9 @@ const sendNotificationEmail = async (user) => {
     - parent Name: ${user.parentName}
     - Contact: ${user.contactNumber}
     - City: ${user.city}
-    - Email: ${user.city}
+    - Email: ${user.email}
     - Source ${user.source}
+    - Picture URL: ${user.pictureUrl}
     - comments: ${user.additionalComments || "N/A"}
     `,
   };
